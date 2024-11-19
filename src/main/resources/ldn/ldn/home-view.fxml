@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.web.WebView?>
+<?import javafx.scene.media.MediaView?>
+
+<StackPane xmlns:fx="http://javafx.com/javafx"
+           xmlns="http://javafx.com/javafx"
+           fx:controller="ldn.ldn.HomeController"
+           stylesheets="style.css"
+           styleClass="stack-pane">
+
+    <!-- Background Video -->
+    <MediaView fx:id="mediaView" fitWidth="1920" fitHeight="1080" />
+
+    <!-- Main Overlay -->
+    <VBox spacing="10" alignment="CENTER" style="-fx-padding: 20;">
+
+        <!-- Top Navigation Bar -->
+        <HBox spacing="10" alignment="CENTER" style="-fx-padding: 10; -fx-background-color: rgba(255, 255, 255, 0.8); -fx-background-radius: 15;">
+            <Button onAction="#navigateBack" styleClass="nav-icon">
+                <Label text="◀" styleClass="icon" />
+            </Button>
+            <Button onAction="#navigateForward" styleClass="nav-icon">
+                <Label text="▶" styleClass="icon" />
+            </Button>
+            <Button onAction="#refreshPage" styleClass="nav-icon">
+                <Label text="🔄" styleClass="icon" />
+            </Button>
+            <TextField fx:id="urlBar" promptText="Enter URL..." style="-fx-background-radius: 15; -fx-pref-width: 600;" />
+            <Button onAction="#loadUrl" styleClass="nav-icon">
+                <Label text="🔍" styleClass="icon" />
+            </Button>
+        </HBox>
+
+        <!-- Main Content -->
+        <HBox spacing="20" alignment="CENTER" style="-fx-padding: 20;">
+
+            <!-- Sidebar (Folders Section) -->
+            <VBox spacing="10" alignment="TOP_CENTER" style="-fx-background-color: rgba(255, 255, 255, 0.8); -fx-background-radius: 15; -fx-padding: 10;">
+                <Label text="📁 Folders" styleClass="label" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+                <TreeView fx:id="folderTreeView" style="-fx-border-radius: 15;" />
+            </VBox>
+
+            <!-- Links Section -->
+            <VBox spacing="10" alignment="TOP_CENTER" style="-fx-background-color: rgba(255, 255, 255, 0.8); -fx-background-radius: 15; -fx-padding: 10;">
+                <Label text="🔗 Links" styleClass="label" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+                <ListView fx:id="linksListView" style="-fx-border-radius: 15;" />
+            </VBox>
+
+            <!-- WebView Section -->
+            <VBox spacing="10" alignment="CENTER" style="-fx-background-color: rgba(255, 255, 255, 0.8); -fx-background-radius: 15; -fx-padding: 10; -fx-pref-width: 800; -fx-pref-height: 600;">
+                <WebView fx:id="webView" style="-fx-border-radius: 15;" />
+            </VBox>
+        </HBox>
+
+        <!-- Footer -->
+        <HBox spacing="10" alignment="CENTER" style="-fx-padding: 10;">
+            <Button text="➕ Add Links" onAction="#handleAddLinks" styleClass="button add-links" />
+            <Button text="⏹ Quit" onAction="#handleQuit" styleClass="button quit" />
+        </HBox>
+    </VBox>
+</StackPane>
